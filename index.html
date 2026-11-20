@@ -99,16 +99,17 @@
             .benefit_title { @apply text-base font-extrabold; }
             .benefit_description { @apply mt-1.5 text-sm text-muted; }
 
-            .about_intro { @apply grid items-center gap-6 lg:grid-cols-3 lg:gap-10; }
+            .about_intro { @apply grid items-center gap-4 lg:grid-cols-3 lg:gap-10; }
             .about_text { @apply text-sm text-muted sm:text-base; }
-            .about_team { @apply flex flex-col items-center gap-4 rounded-xl bg-surface p-6; }
+            .about_team { @apply flex flex-col items-center gap-3 rounded-xl bg-surface p-4 lg:gap-4 lg:p-6; }
             .about_team_label { @apply inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-ink; }
             .about_team_label svg { @apply size-4 text-brand; }
-            .about_faces { @apply flex max-w-64 flex-wrap justify-center gap-2; }
-            .about_faces img { @apply size-14 rounded-full object-cover ring-2 ring-white; }
-            .about_gallery { @apply mt-6 grid items-center gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-10; }
+            .about_faces { @apply grid w-full max-w-sm grid-cols-7 items-center gap-1.5 lg:flex lg:max-w-64 lg:flex-wrap lg:justify-center lg:gap-2; }
+            .about_faces img { @apply aspect-square w-full rounded-full object-cover ring-2 ring-white lg:size-14; }
+            .about_gallery { @apply mt-6 grid grid-cols-2 items-start gap-x-3 gap-y-4 sm:gap-5 lg:mt-12 lg:grid-cols-3 lg:items-center lg:gap-10; }
             .about_gallery img { @apply aspect-4/3 w-full rounded-xl object-cover; }
-            .about_gallery_text { @apply sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1; }
+            .about_gallery img:nth-of-type(2) { @apply mt-5 lg:mt-0; }
+            .about_gallery_text { @apply col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1; }
             .about_outro { @apply mx-auto mt-8 max-w-2xl text-center text-sm text-muted sm:text-base; }
 
             .reviews { @apply bg-linear-to-br from-warm to-warm-light text-white; }
