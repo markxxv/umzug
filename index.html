@@ -1,1 +1,426 @@
-!!!
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Umzüge, Entrümpelung und Haushaltsauflösung in Frankfurt, Mainz und Wiesbaden. Umzugsservice Star – persönlich, zuverlässig und individuell.">
+    <meta name="theme-color" content="#17191c">
+    <title>Umzug und Entrümpelung in Frankfurt | Umzugsservice Star</title>
+    <link rel="icon" href="img/star.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+            --color-brand: #df0808;
+            --color-brand-hover: #bd0000;
+            --color-ink: #17191c;
+            --color-muted: #555961;
+            --color-warm: #2a201b;
+            --color-warm-light: #443027;
+            --color-surface: #f5f5f5;
+        }
+
+        @layer base {
+            html { @apply scroll-smooth; }
+            body { @apply bg-white font-sans text-ink antialiased; }
+            button { @apply cursor-pointer; }
+            :focus-visible { @apply outline-2 outline-offset-4 outline-brand; }
+            [x-cloak] { display: none !important; }
+            @media (prefers-reduced-motion: reduce) {
+                html { scroll-behavior: auto; }
+                *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+            }
+        }
+
+        @layer components {
+            .container-wide { @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12; }
+            .section { @apply py-14 sm:py-16 lg:py-24; }
+            .section_header { @apply mx-auto mb-8 max-w-2xl text-center lg:mb-12; }
+            .section_title { @apply text-2xl font-extrabold tracking-tight sm:text-3xl; }
+            .section_intro { @apply mt-3 text-sm text-muted sm:text-base; }
+            .section_action { @apply mt-9 flex justify-center lg:mt-12; }
+            .button { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-hover; }
+            .button_light { @apply bg-white text-ink hover:bg-neutral-100; }
+            .button svg { @apply size-4 shrink-0; }
+            .icon-button { @apply inline-flex size-11 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white transition hover:bg-white/20; }
+            .icon-button svg { @apply size-5; }
+
+            .hero { @apply relative overflow-hidden bg-ink text-white; }
+            .hero_bg { @apply absolute inset-0 size-full object-cover; }
+            .hero_overlay { @apply absolute inset-0 bg-linear-to-b from-black/45 via-black/30 to-black/65 lg:bg-linear-to-r lg:from-black/55 lg:via-black/20 lg:to-black/10; }
+            .header { @apply relative z-20; }
+            .header_inner { @apply flex min-h-20 items-center justify-between gap-4; }
+            .header_logo { @apply w-40 shrink-0 sm:w-52; }
+            .header_nav { @apply hidden items-center gap-7 text-sm font-semibold lg:flex; }
+            .header_nav a { @apply text-white/80 transition hover:text-white; }
+            .header_phone { @apply inline-flex items-center gap-2 whitespace-nowrap font-bold; }
+            .header_phone svg { @apply size-4 shrink-0; }
+            .header_mobile { @apply absolute inset-x-5 top-full z-30 rounded-xl bg-ink p-3 shadow-2xl lg:hidden; }
+            .header_mobile a { @apply flex min-h-12 items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-white hover:bg-white/10; }
+            .header_mobile a svg { @apply size-4 text-white/50; }
+            .hero_inner { @apply relative z-10 grid items-center gap-5 pb-12 pt-7 sm:pb-16 sm:pt-12 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6 lg:pb-24 lg:pt-16; }
+            .hero_copy { @apply lg:col-start-1 lg:row-start-1 lg:self-end; }
+            .hero_location { @apply mb-4 inline-flex items-center gap-2 text-xs font-bold text-white/80 sm:text-sm; }
+            .hero_location svg { @apply size-4 text-white; }
+            .hero_h1 { @apply max-w-xl text-3xl font-extrabold tracking-tight sm:text-4xl; }
+            .hero_lead { @apply mt-4 max-w-lg text-sm text-white/85 sm:text-base; }
+            .hero_visual { @apply mx-auto w-full max-w-sm lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none; }
+            .hero_visual img { @apply w-full object-contain; }
+            .hero_services { @apply flex flex-col gap-5 lg:col-start-1 lg:row-start-2 lg:self-start; }
+            .hero_links { @apply flex flex-wrap gap-2; }
+            .hero_link { @apply inline-flex min-h-10 items-center gap-2 rounded-lg bg-white/12 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/25 sm:text-sm; }
+            .hero_link svg { @apply size-4 shrink-0 text-white/70; }
+            .hero_action { @apply order-first flex flex-wrap items-center gap-4 lg:order-last; }
+            .hero_hint { @apply inline-flex items-center gap-2 text-xs text-white/80; }
+            .hero_hint svg { @apply size-4 shrink-0; }
+
+            .services_grid { @apply grid gap-4 md:grid-cols-3 lg:gap-6; }
+            .service_card { @apply flex h-full flex-col rounded-xl bg-surface p-5 sm:p-6 lg:p-7; }
+            .service_image { @apply size-20 rounded-lg object-cover sm:size-24; }
+            .service_title { @apply mt-5 text-lg font-extrabold tracking-tight; }
+            .service_description { @apply mt-2 text-sm text-muted; }
+            .service_list { @apply mt-auto space-y-2.5 pt-5 text-sm font-semibold; }
+            .service_list li { @apply flex items-start gap-2.5; }
+            .service_list svg { @apply mt-0.5 size-4 shrink-0 text-brand; }
+
+            .benefits { @apply bg-ink text-white; }
+            .benefits .section_intro { @apply text-white/65; }
+            .benefits_grid { @apply grid gap-3 md:grid-cols-2 lg:gap-4; }
+            .benefit_card { @apply flex items-start gap-4 rounded-xl bg-white p-4 text-ink sm:items-center sm:gap-5 sm:p-5; }
+            .benefit_card img { @apply size-20 shrink-0 rounded-lg object-cover sm:size-28; }
+            .benefit_title { @apply text-base font-extrabold; }
+            .benefit_description { @apply mt-1.5 text-sm text-muted; }
+
+            .about_intro { @apply grid items-center gap-6 lg:grid-cols-3 lg:gap-10; }
+            .about_text { @apply text-sm text-muted sm:text-base; }
+            .about_team { @apply flex flex-col items-center gap-4 rounded-xl bg-surface p-6; }
+            .about_team_label { @apply inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-ink; }
+            .about_team_label svg { @apply size-4 text-brand; }
+            .about_faces { @apply flex max-w-64 flex-wrap justify-center gap-2; }
+            .about_faces img { @apply size-14 rounded-full object-cover ring-2 ring-white; }
+            .about_gallery { @apply mt-6 grid items-center gap-5 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-10; }
+            .about_gallery img { @apply aspect-4/3 w-full rounded-xl object-cover; }
+            .about_gallery_text { @apply sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1; }
+            .about_outro { @apply mx-auto mt-8 max-w-2xl text-center text-sm text-muted sm:text-base; }
+
+            .reviews { @apply bg-linear-to-br from-warm to-warm-light text-white; }
+            .reviews .section_intro { @apply text-white/70; }
+            .reviews_grid { @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3; }
+            .review_card { @apply flex h-full flex-col rounded-xl bg-white p-5 text-ink sm:p-6; }
+            .review_quote { @apply mb-3 size-5 text-brand; }
+            .review_text { @apply mb-5 text-sm text-muted; }
+            .review_author { @apply mt-auto flex items-center gap-2.5 text-sm font-bold; }
+            .review_author svg { @apply size-5 text-neutral-400; }
+
+            .numbers_grid { @apply grid grid-cols-2 gap-x-5 gap-y-8 lg:grid-cols-4 lg:gap-8; }
+            .number_item { @apply flex flex-col items-center text-center; }
+            .number_value { @apply order-first text-3xl font-extrabold tabular-nums tracking-tight text-brand sm:text-4xl; }
+            .number_label { @apply mt-2 w-full break-words text-xs font-extrabold sm:text-base; }
+            .number_description { @apply mt-2 max-w-64 text-xs text-muted sm:text-sm; }
+
+            .callout { @apply overflow-hidden bg-linear-to-br from-warm to-warm-light text-white; }
+            .callout_inner { @apply grid items-center gap-5 pt-12 lg:grid-cols-2 lg:gap-12 lg:pt-0; }
+            .callout_copy { @apply pb-2 lg:py-16; }
+            .callout_title { @apply max-w-xl text-2xl font-extrabold tracking-tight sm:text-3xl; }
+            .callout_description { @apply mt-4 max-w-xl text-sm text-white/75 sm:text-base; }
+            .callout_image { @apply mx-auto w-full max-w-sm self-end sm:max-w-md lg:max-w-md; }
+            .callout_image img { @apply w-full object-contain object-bottom; }
+
+            .faq_list { @apply mx-auto max-w-3xl space-y-2; }
+            .faq_item { @apply overflow-hidden rounded-xl bg-surface; }
+            .faq_button { @apply flex w-full items-center gap-3 px-4 py-4 text-left text-sm font-bold sm:gap-4 sm:px-5 sm:text-base; }
+            .faq_icon { @apply flex size-7 shrink-0 items-center justify-center rounded-full bg-brand text-white; }
+            .faq_icon svg { @apply size-4; }
+            .faq_answer { @apply px-4 pb-5 pl-14 text-sm text-muted sm:pl-16 sm:pr-6; }
+
+            .contact { @apply relative overflow-hidden bg-warm; }
+            .contact_bg { @apply absolute inset-0 size-full object-cover object-top lg:object-center; }
+            .contact_overlay { @apply absolute inset-0 bg-linear-to-b from-transparent via-black/15 to-black/25 lg:bg-linear-to-r lg:from-black/25 lg:to-transparent; }
+            .contact_inner { @apply relative pt-40 pb-8 sm:pt-56 sm:pb-12 lg:py-20; }
+            .contact_card { @apply w-full max-w-xl rounded-xl bg-white p-5 shadow-xl sm:p-8 lg:p-10; }
+            .contact_title { @apply text-2xl font-extrabold tracking-tight sm:text-3xl; }
+            .contact_intro { @apply mt-3 text-sm text-muted; }
+            .contact_form { @apply mt-6 space-y-4; }
+            .contact_fields { @apply grid gap-4 sm:grid-cols-2; }
+            .field { @apply flex flex-col gap-1.5; }
+            .field_label { @apply text-xs font-bold text-ink; }
+            .field_input { @apply flex items-center gap-3 rounded-lg bg-surface px-3.5 transition focus-within:ring-2 focus-within:ring-brand/40; }
+            .field_input svg { @apply size-4 shrink-0 text-muted; }
+            .field_input input { @apply min-h-12 w-full min-w-0 bg-transparent text-base outline-none placeholder:text-neutral-500; }
+            .field_textarea { @apply min-h-28 w-full resize-y rounded-lg bg-surface px-3.5 py-3 text-base outline-none placeholder:text-neutral-500 focus:ring-2 focus:ring-brand/40; }
+            .contact_consent { @apply flex items-start gap-2.5 text-xs text-muted; }
+            .contact_consent input { @apply mt-1 size-4 shrink-0 accent-brand; }
+            .contact_consent a { @apply font-semibold text-ink underline underline-offset-2; }
+
+            .footer { @apply bg-black py-10 text-white/60 sm:py-12; }
+            .footer_main { @apply flex flex-col items-center gap-4 text-center; }
+            .footer_logo { @apply w-44; }
+            .footer_contact { @apply flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold text-white; }
+            .footer_contact a { @apply inline-flex items-center gap-2 break-all hover:text-white/75; }
+            .footer_contact svg { @apply size-4 shrink-0; }
+            .footer_address { @apply inline-flex items-center gap-2 text-sm transition hover:text-white; }
+            .footer_address svg { @apply size-4 shrink-0; }
+            .footer_bottom { @apply mt-7 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-center text-xs lg:flex-row lg:text-left; }
+            .footer_links { @apply flex flex-wrap justify-center gap-x-4 gap-y-2; }
+            .footer_links a { @apply transition hover:text-white; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:p-3">Zum Inhalt springen</a>
+
+    <!-- Header & hero -->
+    <div class="hero" id="start">
+        <img class="hero_bg" src="img/umzug_main_header.jpg" alt="" width="1800" height="1014" fetchpriority="high">
+        <div class="hero_overlay" aria-hidden="true"></div>
+        <header class="header" x-data="{ menuOpen: false }" @keydown.escape.window="menuOpen = false" @click.outside="menuOpen = false" @resize.window="if (window.innerWidth >= 1024) menuOpen = false">
+            <div class="container-wide header_inner">
+                <a href="#start" aria-label="Umzugsservice Star – Startseite"><img class="header_logo" src="img/logo.svg" alt="Umzugsservice Star" width="831" height="122"></a>
+                <nav class="header_nav" aria-label="Hauptnavigation">
+                    <a href="#dienstleistungen">Dienstleistungen</a>
+                    <a href="#vorteile">Warum wir?</a>
+                    <a href="#ueber-uns">Über uns</a>
+                    <a href="#kontakt">Kontakt</a>
+                    <a class="header_phone" href="tel:+491633470486"><i data-lucide="phone" aria-hidden="true"></i> +49 163 3470 486</a>
+                </nav>
+                <div class="flex items-center gap-2 lg:hidden">
+                    <a class="icon-button" href="tel:+491633470486" aria-label="Jetzt anrufen"><i data-lucide="phone" aria-hidden="true"></i></a>
+                    <button class="icon-button" type="button" @click="menuOpen = !menuOpen" :aria-expanded="menuOpen.toString()" aria-controls="mobile-menu" :aria-label="menuOpen ? 'Menü schließen' : 'Menü öffnen'">
+                        <span x-show="!menuOpen"><i data-lucide="menu" aria-hidden="true"></i></span>
+                        <span x-show="menuOpen" x-cloak><i data-lucide="x" aria-hidden="true"></i></span>
+                    </button>
+                </div>
+            </div>
+            <nav class="header_mobile" id="mobile-menu" aria-label="Mobile Navigation" x-show="menuOpen" x-cloak x-transition @click="if ($event.target.closest('a')) menuOpen = false">
+                <a href="#dienstleistungen">Dienstleistungen <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                <a href="#vorteile">Warum wir? <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                <a href="#ueber-uns">Über uns <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                <a href="#bewertungen">Bewertungen <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+                <a href="#kontakt">Kontakt <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+            </nav>
+        </header>
+
+        <div class="container-wide hero_inner">
+            <div class="hero_copy">
+                <p class="hero_location"><i data-lucide="map-pin" aria-hidden="true"></i> Frankfurt am Main · Mainz · Wiesbaden</p>
+                <h1 class="hero_h1">Umzug und Entrümpelung in Frankfurt</h1>
+                <p class="hero_lead">Ihr zuverlässiger Partner für private und gewerbliche Umzüge, Haushaltsauflösungen und fachgerechte Entsorgung.</p>
+            </div>
+            <div class="hero_visual"><img src="img/umzug_frankfurt.webp" alt="Umzugs-Lkw mit Möbeln und Umzugskartons" width="1400" height="1400" fetchpriority="high"></div>
+            <div class="hero_services">
+                <div class="hero_links" aria-label="Weitere Leistungen">
+                    <a class="hero_link" href="https://umzug-star.de/ihr-verlasslicher-partner-fur-einen-entspannten-seniorenumzug/"><i data-lucide="hand-heart" aria-hidden="true"></i> Seniorenumzüge</a>
+                    <a class="hero_link" href="https://umzug-star.de/fachgerechte-entsorgung-nachhaltig-und-verantwortungsvoll/"><i data-lucide="house" aria-hidden="true"></i> Wohnungsauflösung</a>
+                    <a class="hero_link" href="https://umzug-star.de/mobelmontage-der-perfekte-abschluss-ihres-umzugs/"><i data-lucide="armchair" aria-hidden="true"></i> Möbelmontage</a>
+                    <a class="hero_link" href="https://umzug-star.de/internationale-umzuge/"><i data-lucide="globe" aria-hidden="true"></i> Internationale Umzüge</a>
+                    <a class="hero_link" href="https://umzug-star.de/wohnungsauflosung-bei-todesfall/"><i data-lucide="heart-handshake" aria-hidden="true"></i> Wohnungsauflösung bei Todesfall</a>
+                    <a class="hero_link" href="https://umzug-star.de/professionelle-entrumpelung-von-messie-wohnungen/"><i data-lucide="package-open" aria-hidden="true"></i> Messie-Entrümpelung</a>
+                    <a class="hero_link" href="https://umzug-star.de/ihr-fernumzug-entspannt-von-tur-zu-tur/"><i data-lucide="truck" aria-hidden="true"></i> Fernumzüge</a>
+                </div>
+                <div class="hero_action"><a class="button button_light" href="#kontakt">Kostenlose Beratung <i data-lucide="arrow-right" aria-hidden="true"></i></a><span class="hero_hint"><i data-lucide="check-circle" aria-hidden="true"></i> Unverbindliches Angebot</span></div>
+            </div>
+        </div>
+    </div>
+
+    <main id="main">
+        <!-- Dienstleistungen -->
+        <section class="section" id="dienstleistungen">
+            <div class="container-wide">
+                <div class="section_header"><h2 class="section_title">Unsere Dienstleistungen</h2><p class="section_intro">Von der ersten Besichtigung bis zur Übergabe – alles aus einer Hand.</p></div>
+                <div class="services_grid">
+                    <article class="service_card">
+                        <img class="service_image" src="img/img.jpg" alt="Umzugswagen beim Beladen" width="460" height="460" loading="lazy">
+                        <h3 class="service_title">Umzüge &amp; Firmenumzüge</h3>
+                        <p class="service_description">Wir planen und organisieren Ihren privaten oder gewerblichen Umzug zuverlässig und sorgen für einen sicheren Transport.</p>
+                        <ul class="service_list">
+                            <li><i data-lucide="check" aria-hidden="true"></i> Privatumzüge</li>
+                            <li><i data-lucide="check" aria-hidden="true"></i> Firmenumzüge</li>
+                            <li><i data-lucide="check" aria-hidden="true"></i> Transport und Möbelmontage</li>
+                        </ul>
+                    </article>
+                    <article class="service_card">
+                        <img class="service_image" src="img/Fachgerechte.jpg" alt="Container für Recycling und Entsorgung" width="460" height="460" loading="lazy">
+                        <h3 class="service_title">Fachgerechte Entsorgung</h3>
+                        <p class="service_description">Alte Möbel, Elektrogeräte und andere Gegenstände werden sorgfältig getrennt und an zertifizierte Entsorgungsbetriebe übergeben.</p>
+                        <ul class="service_list">
+                            <li><i data-lucide="check" aria-hidden="true"></i> Sperrmüll und Schrott</li>
+                            <li><i data-lucide="check" aria-hidden="true"></i> Umweltgerechte Entsorgung</li>
+                            <li><i data-lucide="check" aria-hidden="true"></i> Verwertung und Recycling</li>
+                        </ul>
+                    </article>
+                    <article class="service_card">
+                        <img class="service_image" src="img/entr.jpg" alt="Alte Möbel bei einer Haushaltsauflösung" width="460" height="460" loading="lazy">
+                        <h3 class="service_title">Entrümpelung &amp; Haushaltsauflösung</h3>
+                        <p class="service_description">Unser erfahrenes Team räumt Wohnungen, Häuser, Keller und Geschäftsräume zügig und gründlich.</p>
+                        <ul class="service_list">
+                            <li><i data-lucide="check" aria-hidden="true"></i> Besichtigung und Beratung</li>
+                            <li><i data-lucide="check" aria-hidden="true"></i> Professionelle Entrümpelung</li>
+                            <li><i data-lucide="check" aria-hidden="true"></i> Besenreine Übergabe</li>
+                        </ul>
+                    </article>
+                </div>
+                <div class="section_action"><a class="button" href="#kontakt">Beratung anfragen <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+            </div>
+        </section>
+
+        <!-- Vorteile -->
+        <section class="section benefits" id="vorteile">
+            <div class="container-wide">
+                <div class="section_header"><h2 class="section_title">Warum Umzugsservice Star?</h2><p class="section_intro">Persönlicher Service, klare Absprachen und ein erfahrenes Team, auf das Sie sich verlassen können.</p></div>
+                <div class="benefits_grid">
+                    <article class="benefit_card"><img src="img/planung.jpg" alt="" width="460" height="460" loading="lazy"><div><h3 class="benefit_title">Individuelle Planung</h3><p class="benefit_description">Wir stimmen jeden Schritt auf Ihre Wünsche, Ihre Situation und Ihren Zeitplan ab.</p></div></article>
+                    <article class="benefit_card"><img src="img/zeitersparnis.jpg" alt="" width="460" height="460" loading="lazy"><div><h3 class="benefit_title">Zeitersparnis</h3><p class="benefit_description">Mit eingespielten Abläufen entlasten wir Sie und schaffen Zeit für die wichtigen Dinge.</p></div></article>
+                    <article class="benefit_card"><img src="img/sicherheit.jpg" alt="" width="460" height="460" loading="lazy"><div><h3 class="benefit_title">Sicherheit &amp; Schutz</h3><p class="benefit_description">Sorgfältige Verpackung, schonender Transport und eine versicherte Abwicklung.</p></div></article>
+                    <article class="benefit_card"><img src="img/bewertungen.jpg" alt="" width="460" height="460" loading="lazy"><div><h3 class="benefit_title">Positive Bewertungen</h3><p class="benefit_description">Die Erfahrungen und Empfehlungen unserer Kunden sprechen für unsere Arbeit.</p></div></article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Über uns -->
+        <section class="section" id="ueber-uns">
+            <div class="container-wide">
+                <div class="section_header"><h2 class="section_title">Über uns</h2></div>
+                <div class="about_intro">
+                    <p class="about_text">Wir sind ein engagiertes Team mit langjähriger Erfahrung in Umzügen, Haushaltsauflösungen und fachgerechter Entsorgung. Mit Sorgfalt und Fachkenntnis meistern wir jede Herausforderung.</p>
+                    <div class="about_team">
+                        <span class="about_team_label"><i data-lucide="users" aria-hidden="true"></i> Unsere Umzugsexperten</span>
+                        <div class="about_faces" aria-label="Unser Team">
+                            <img src="img/kristian_umzug.jpg" alt="Teammitglied" width="1024" height="1024" loading="lazy">
+                            <img src="img/umzug_agent.jpg" alt="Teammitglied" width="435" height="435" loading="lazy">
+                            <img src="img/alex_umzug.jpg" alt="Teammitglied" width="1024" height="1024" loading="lazy">
+                            <img src="img/claus_umzug.jpg" alt="Teammitglied" width="1024" height="1024" loading="lazy">
+                            <img src="img/stefan_umzug.jpg" alt="Teammitglied" width="1024" height="1024" loading="lazy">
+                            <img src="img/ingvar_umzug.jpg" alt="Teammitglied" width="1024" height="1024" loading="lazy">
+                            <img src="img/uber_unz.jpg" alt="Teammitglied" width="428" height="428" loading="lazy">
+                        </div>
+                    </div>
+                    <p class="about_text">Ob ein neuer Lebensabschnitt, die Auflösung eines Haushalts oder die Entsorgung alter Möbel: Wir stehen Ihnen zur Seite und kümmern uns um eine reibungslose Abwicklung.</p>
+                </div>
+                <div class="about_gallery">
+                    <img src="img/umzug_stutgart-800x600.jpg" alt="Familie beim Auspacken von Umzugskartons" width="800" height="600" loading="lazy">
+                    <img src="img/umzug_service-800x600.jpg" alt="Wohnzimmer mit Umzugskartons" width="800" height="600" loading="lazy">
+                    <p class="about_text about_gallery_text">Von unserem Standort in Budenheim erreichen wir Frankfurt am Main, Mainz und Wiesbaden schnell. So können wir flexibel auf Ihre Wünsche reagieren und Sie vor Ort persönlich beraten.</p>
+                </div>
+                <p class="about_outro">Jeder Umzug ist anders. Gemeinsam finden wir eine passende Lösung, damit Sie sich entspannt auf Ihren nächsten Schritt konzentrieren können.</p>
+                <div class="section_action"><a class="button" href="#kontakt">Kontakt aufnehmen <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
+            </div>
+        </section>
+
+        <!-- Bewertungen -->
+        <section class="section reviews" id="bewertungen">
+            <div class="container-wide">
+                <div class="section_header"><h2 class="section_title">Bewertungen</h2><p class="section_intro">Das sagen unsere Kunden über uns.</p></div>
+                <div class="reviews_grid">
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Das Team ist sehr kompetent und freundlich. […] Preis-Leistung ist top!“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Madeleine K.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Ich kann dieses Unternehmen weiterempfehlen und werde sie beim nächsten Umzug wieder buchen“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Daniel H.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Die Möbel wurden gut verpackt und sorgfältig verladen.“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Bernd H.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Super unkomplizierte und sehr kurze Terminfindung. Schneller und guter Umzug.“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Felicia D.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Waren pünktlich, haben fleißig angepackt und geschleppt. Gerne wieder.“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Philip S.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Super kompetent und freundlich! Vielen Dank für die tolle Unterstützung beim Umzug!!“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Stefan H.</figcaption></figure>
+                </div>
+                <div class="section_action"><a class="button" href="https://maps.app.goo.gl/DChoaGH1B4owU1pBA" target="_blank" rel="noopener noreferrer">Mehr auf Google <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+            </div>
+        </section>
+
+        <!-- Kennzahlen -->
+        <section class="section" id="zahlen">
+            <div class="container-wide">
+                <div class="section_header"><h2 class="section_title">Über uns in Zahlen</h2></div>
+                <dl class="numbers_grid">
+                    <div class="number_item"><dt class="number_label">Kundenzufriedenheit</dt><dd class="number_value">99%</dd><dd class="number_description">Zuverlässiger Service, den unsere Kunden gerne weiterempfehlen.</dd></div>
+                    <div class="number_item"><dt class="number_label">Jahre Erfahrung</dt><dd class="number_value">15+</dd><dd class="number_description">Erfahrung und Fachwissen für kleine und große Projekte.</dd></div>
+                    <div class="number_item"><dt class="number_label">Abgeschlossene Projekte</dt><dd class="number_value">1.200+</dd><dd class="number_description">Vom privaten Umzug bis zur kompletten Firmenverlagerung.</dd></div>
+                    <div class="number_item"><dt class="number_label">Reaktionszeit</dt><dd class="number_value">24 h</dd><dd class="number_description">Ein individuelles Angebot innerhalb von 24 Stunden.</dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <!-- Beratung -->
+        <section class="callout">
+            <div class="container-wide callout_inner">
+                <div class="callout_copy">
+                    <h2 class="callout_title">Bereit für einen reibungslosen Umzug oder eine stressfreie Entrümpelung?</h2>
+                    <p class="callout_description">Lassen Sie uns Ihr Projekt gemeinsam planen. Wir beraten Sie kostenlos und erstellen ein unverbindliches Angebot.</p>
+                    <a class="button mt-6" href="#kontakt">Jetzt Kontakt aufnehmen <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="callout_image"><img src="img/seniorenumzüge.png" alt="Paar sitzt entspannt zwischen Umzugskartons" width="1160" height="1062" loading="lazy"></div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="faq">
+            <div class="container-wide">
+                <div class="section_header"><h2 class="section_title">Häufig gestellte Fragen</h2></div>
+                <div class="faq_list" x-data="{ active: 1 }">
+                    <article class="faq_item"><h3><button class="faq_button" type="button" id="faq-button-1" @click="active = active === 1 ? null : 1" :aria-expanded="active === 1" aria-controls="faq-1"><span class="faq_icon"><span x-show="active !== 1" x-cloak><i data-lucide="plus" aria-hidden="true"></i></span><span x-show="active === 1"><i data-lucide="minus" aria-hidden="true"></i></span></span> Was kostet ein Umzugsservice?</button></h3><div class="faq_answer" id="faq-1" role="region" aria-labelledby="faq-button-1" x-show="active === 1">Der Preis richtet sich nach der Entfernung, dem Umfang Ihres Hausstands und den gewünschten Leistungen. Nach einer kostenlosen Beratung erhalten Sie von uns ein individuelles Angebot.</div></article>
+                    <article class="faq_item"><h3><button class="faq_button" type="button" id="faq-button-2" @click="active = active === 2 ? null : 2" :aria-expanded="active === 2" aria-controls="faq-2"><span class="faq_icon"><span x-show="active !== 2"><i data-lucide="plus" aria-hidden="true"></i></span><span x-show="active === 2" x-cloak><i data-lucide="minus" aria-hidden="true"></i></span></span> Welche Leistungen bieten Sie bei einem Umzug an?</button></h3><div class="faq_answer" id="faq-2" role="region" aria-labelledby="faq-button-2" x-show="active === 2" x-cloak>Wir übernehmen auf Wunsch das Verpacken, den Transport, den Auf- und Abbau Ihrer Möbel sowie das Auspacken am neuen Wohnort.</div></article>
+                    <article class="faq_item"><h3><button class="faq_button" type="button" id="faq-button-3" @click="active = active === 3 ? null : 3" :aria-expanded="active === 3" aria-controls="faq-3"><span class="faq_icon"><span x-show="active !== 3"><i data-lucide="plus" aria-hidden="true"></i></span><span x-show="active === 3" x-cloak><i data-lucide="minus" aria-hidden="true"></i></span></span> Wie lange im Voraus sollte ich meinen Umzug buchen?</button></h3><div class="faq_answer" id="faq-3" role="region" aria-labelledby="faq-button-3" x-show="active === 3" x-cloak>Am besten vereinbaren Sie Ihren Termin mindestens vier Wochen vor dem Umzug. Bei dringenden Anfragen prüfen wir gerne, ob ein kurzfristiger Termin möglich ist.</div></article>
+                    <article class="faq_item"><h3><button class="faq_button" type="button" id="faq-button-4" @click="active = active === 4 ? null : 4" :aria-expanded="active === 4" aria-controls="faq-4"><span class="faq_icon"><span x-show="active !== 4"><i data-lucide="plus" aria-hidden="true"></i></span><span x-show="active === 4" x-cloak><i data-lucide="minus" aria-hidden="true"></i></span></span> Kann ich auch nur einen Teil des Umzugsservices buchen?</button></h3><div class="faq_answer" id="faq-4" role="region" aria-labelledby="faq-button-4" x-show="active === 4" x-cloak>Ja, Sie können unsere Leistungen flexibel zusammenstellen. Beispielsweise übernehmen wir den Transport, während Sie selbst ein- und auspacken.</div></article>
+                    <article class="faq_item"><h3><button class="faq_button" type="button" id="faq-button-5" @click="active = active === 5 ? null : 5" :aria-expanded="active === 5" aria-controls="faq-5"><span class="faq_icon"><span x-show="active !== 5"><i data-lucide="plus" aria-hidden="true"></i></span><span x-show="active === 5" x-cloak><i data-lucide="minus" aria-hidden="true"></i></span></span> Bieten Sie Umzugsservices auch für Firmen an?</button></h3><div class="faq_answer" id="faq-5" role="region" aria-labelledby="faq-button-5" x-show="active === 5" x-cloak>Wir organisieren Firmenumzüge und die Verlagerung von Büros und Geschäftsräumen. Gemeinsam planen wir den Ablauf so, dass Ihr Geschäftsbetrieb möglichst wenig beeinträchtigt wird.</div></article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt: static mail draft, replace with Laravel endpoint later -->
+        <section class="contact" id="kontakt">
+            <img class="contact_bg" src="img/unzung_trak.jpg" alt="" width="2400" height="1600" loading="lazy">
+            <div class="contact_overlay" aria-hidden="true"></div>
+            <div class="container-wide contact_inner">
+                <div class="contact_card">
+                    <h2 class="contact_title">Kontaktieren Sie uns</h2>
+                    <p class="contact_intro">Erzählen Sie uns von Ihrem Vorhaben. Wir melden uns mit einem persönlichen, unverbindlichen Angebot bei Ihnen.</p>
+                    <form class="contact_form" action="mailto:umzugsservice.star@gmail.com" method="post" enctype="text/plain" x-data="contactForm" @submit.prevent="prepareEmail">
+                        <div class="field"><label class="field_label" for="name">Ihr Name</label><div class="field_input"><i data-lucide="user-round" aria-hidden="true"></i><input id="name" name="name" type="text" placeholder="Vor- und Nachname" autocomplete="name" x-model="name" required></div></div>
+                        <div class="contact_fields">
+                            <div class="field"><label class="field_label" for="phone">Telefon</label><div class="field_input"><i data-lucide="phone" aria-hidden="true"></i><input id="phone" name="phone" type="tel" placeholder="+49 …" autocomplete="tel" x-model="phone" required></div></div>
+                            <div class="field"><label class="field_label" for="email">E-Mail</label><div class="field_input"><i data-lucide="mail" aria-hidden="true"></i><input id="email" name="email" type="email" placeholder="Ihre E-Mail" autocomplete="email" x-model="email" required></div></div>
+                        </div>
+                        <div class="field"><label class="field_label" for="message">Ihre Nachricht</label><textarea class="field_textarea" id="message" name="message" rows="4" placeholder="Wie können wir Ihnen helfen?" x-model="message" required></textarea></div>
+                        <label class="contact_consent"><input type="checkbox" name="consent" required><span>Ich habe die <a href="https://umzug-star.de/datenschutzerklarung/" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> zur Kenntnis genommen.</span></label>
+                        <button class="button w-full" type="submit">E-Mail vorbereiten <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                        <p class="text-center text-xs text-muted" aria-live="polite" x-text="prepared ? 'Bitte senden Sie den Entwurf in Ihrem E-Mail-Programm.' : 'Öffnet Ihre E-Mail-App mit der vorbereiteten Anfrage.'">Öffnet Ihre E-Mail-App mit der vorbereiteten Anfrage.</p>
+                        <noscript><p class="text-sm text-muted">Schreiben Sie uns direkt an <a class="underline" href="mailto:umzugsservice.star@gmail.com">umzugsservice.star@gmail.com</a>.</p></noscript>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-wide">
+            <div class="footer_main">
+                <a href="#start" aria-label="Zur Startseite"><img class="footer_logo" src="img/logo.svg" alt="Umzugsservice Star" width="831" height="122" loading="lazy"></a>
+                <div class="footer_contact">
+                    <a href="mailto:umzugsservice.star@gmail.com"><i data-lucide="mail" aria-hidden="true"></i> umzugsservice.star@gmail.com</a>
+                    <a href="tel:+491633470486"><i data-lucide="phone" aria-hidden="true"></i> +49 163 3470 486</a>
+                </div>
+                <a class="footer_address" href="https://maps.app.goo.gl/DChoaGH1B4owU1pBA" target="_blank" rel="noopener noreferrer"><i data-lucide="map-pin" aria-hidden="true"></i> Mainzer Str. 20, 55257 Budenheim</a>
+            </div>
+            <div class="footer_bottom">
+                <p>© <span x-data x-text="new Date().getFullYear()">2026</span> Umzugsservice Star. Alle Rechte vorbehalten.</p>
+                <nav class="footer_links" aria-label="Rechtliche Informationen"><a href="https://umzug-star.de/impressum/">Impressum</a><a href="https://umzug-star.de/datenschutzerklarung/">Datenschutz</a><span>Design von <a href="https://zaltsman.media/" target="_blank" rel="noopener noreferrer">Zaltsman Media</a></span></nav>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('contactForm', () => ({
+                name: '', phone: '', email: '', message: '', prepared: false,
+                prepareEmail() {
+                    const subject = 'Anfrage – Umzugsservice Star';
+                    const body = `Name: ${this.name}\nTelefon: ${this.phone}\nE-Mail: ${this.email}\n\n${this.message}`;
+                    window.location.href = `mailto:umzugsservice.star@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    this.prepared = true;
+                }
+            }));
+        });
+        document.addEventListener('DOMContentLoaded', () => window.lucide?.createIcons());
+    </script>
+</body>
+</html>
