@@ -14,7 +14,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
     <style type="text/tailwindcss">
-        @theme {
+        @theme static {
             --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
             --color-brand: #df0808;
             --color-brand-hover: #bd0000;
@@ -54,7 +54,7 @@
             .hero_bg { @apply absolute inset-0 size-full object-cover; }
             .hero_overlay { @apply absolute inset-0 bg-linear-to-b from-black/45 via-black/30 to-black/65 lg:bg-linear-to-r lg:from-black/55 lg:via-black/20 lg:to-black/10; }
             .header { @apply relative z-20; }
-            .header_inner { @apply flex min-h-20 items-center justify-between gap-4; }
+            .header_inner { @apply flex min-h-16 items-center justify-between gap-4 lg:min-h-20; }
             .header_logo { @apply w-40 shrink-0 sm:w-52; }
             .header_nav { @apply hidden items-center gap-7 text-sm font-semibold lg:flex; }
             .header_nav a { @apply text-white/80 transition hover:text-white; }
@@ -63,24 +63,27 @@
             .header_mobile { @apply absolute inset-x-5 top-full z-30 rounded-xl bg-ink p-3 shadow-2xl lg:hidden; }
             .header_mobile a { @apply flex min-h-12 items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-white hover:bg-white/10; }
             .header_mobile a svg { @apply size-4 text-white/50; }
-            .hero_inner { @apply relative z-10 grid items-center gap-5 pb-12 pt-7 sm:pb-16 sm:pt-12 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6 lg:pb-24 lg:pt-16; }
-            .hero_copy { @apply lg:col-start-1 lg:row-start-1 lg:self-end; }
-            .hero_location { @apply mb-4 inline-flex items-center gap-2 text-xs font-bold text-white/80 sm:text-sm; }
+            .hero_inner { @apply relative z-10 grid items-center gap-4 pb-8 pt-3 sm:pb-12 sm:pt-8 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-6 lg:pb-24 lg:pt-16; }
+            .hero_copy { @apply order-1 lg:order-none lg:col-start-1 lg:row-start-1 lg:self-end; }
+            .hero_location { @apply mb-2 inline-flex items-center gap-1.5 text-xs font-semibold text-white/80 lg:mb-4 lg:text-sm; }
             .hero_location svg { @apply size-4 text-white; }
             .hero_h1 { @apply max-w-xl text-3xl font-extrabold tracking-tight sm:text-4xl; }
-            .hero_lead { @apply mt-4 max-w-lg text-sm text-white/85 sm:text-base; }
-            .hero_visual { @apply mx-auto w-full max-w-sm lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none; }
+            .hero_title_line { @apply block lg:inline; }
+            .hero_city { @apply whitespace-nowrap text-sm font-semibold text-white/80 sm:text-base lg:text-4xl lg:font-extrabold lg:text-white; }
+            .hero_lead { @apply mt-2 max-w-lg text-sm text-white/85 sm:text-base lg:mt-4; }
+            .hero_visual { @apply order-3 mx-auto w-full max-w-64 sm:max-w-sm lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none; }
             .hero_visual img { @apply w-full object-contain; }
-            .hero_services { @apply flex flex-col gap-5 lg:col-start-1 lg:row-start-2 lg:self-start; }
-            .hero_links { @apply flex flex-wrap gap-2; }
-            .hero_link { @apply inline-flex min-h-10 items-center gap-2 rounded-lg bg-white/12 px-3 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/25 sm:text-sm; }
+            .hero_services { @apply contents lg:flex lg:flex-col lg:gap-5 lg:col-start-1 lg:row-start-2 lg:self-start; }
+            .hero_links { @apply order-4 flex flex-wrap gap-1.5 lg:order-none lg:gap-2; }
+            .hero_link { @apply inline-flex min-h-9 items-center gap-1.5 rounded-lg bg-white/12 px-2.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition hover:bg-white/25 sm:text-sm lg:min-h-10 lg:gap-2 lg:px-3; }
             .hero_link svg { @apply size-4 shrink-0 text-white/70; }
-            .hero_action { @apply order-first flex flex-wrap items-center gap-4 lg:order-last; }
-            .hero_hint { @apply inline-flex items-center gap-2 text-xs text-white/80; }
+            .hero_action { @apply order-2 flex flex-col items-stretch gap-2 lg:order-last lg:flex-row lg:flex-wrap lg:items-center lg:gap-4; }
+            .hero_action .button_light { @apply bg-brand text-white hover:bg-brand-hover lg:bg-white lg:text-ink lg:hover:bg-neutral-100; }
+            .hero_hint { @apply inline-flex items-center justify-center gap-2 text-xs text-white/80 lg:justify-start; }
             .hero_hint svg { @apply size-4 shrink-0; }
 
-            .services_grid { @apply grid gap-4 md:grid-cols-3 lg:gap-6; }
-            .service_card { @apply flex h-full flex-col rounded-xl bg-surface p-5 sm:p-6 lg:p-7; }
+            .services_grid { @apply grid gap-9 md:grid-cols-3 md:gap-8 lg:gap-12; }
+            .service_card { @apply flex h-full flex-col; }
             .service_image { @apply size-20 rounded-lg object-cover sm:size-24; }
             .service_title { @apply mt-5 text-lg font-extrabold tracking-tight; }
             .service_description { @apply mt-2 text-sm text-muted; }
@@ -208,7 +211,7 @@
         <div class="container-wide hero_inner">
             <div class="hero_copy">
                 <p class="hero_location"><i data-lucide="map-pin" aria-hidden="true"></i> Frankfurt am Main · Mainz · Wiesbaden</p>
-                <h1 class="hero_h1">Umzug und Entrümpelung in Frankfurt</h1>
+                <h1 class="hero_h1">Umzug und <span class="hero_title_line">Entrümpelung <span class="hero_city">in Frankfurt</span></span></h1>
                 <p class="hero_lead">Ihr zuverlässiger Partner für private und gewerbliche Umzüge, Haushaltsauflösungen und fachgerechte Entsorgung.</p>
             </div>
             <div class="hero_visual"><img src="img/umzug_frankfurt.webp" alt="Umzugs-Lkw mit Möbeln und Umzugskartons" width="1400" height="1400" fetchpriority="high"></div>
@@ -269,9 +272,9 @@
         </section>
 
         <!-- Vorteile -->
-        <section class="section benefits" id="vorteile">
+        <section class="section benefits bg-ink text-white" id="vorteile">
             <div class="container-wide">
-                <div class="section_header"><h2 class="section_title">Warum Umzugsservice Star?</h2><p class="section_intro">Persönlicher Service, klare Absprachen und ein erfahrenes Team, auf das Sie sich verlassen können.</p></div>
+                <div class="section_header"><h2 class="section_title">Warum Uns Wählen?</h2><p class="section_intro">Persönlicher Service, klare Absprachen und ein erfahrenes Team, auf das Sie sich verlassen können.</p></div>
                 <div class="benefits_grid">
                     <article class="benefit_card"><img src="img/planung.jpg" alt="" width="460" height="460" loading="lazy"><div><h3 class="benefit_title">Individuelle Planung</h3><p class="benefit_description">Wir stimmen jeden Schritt auf Ihre Wünsche, Ihre Situation und Ihren Zeitplan ab.</p></div></article>
                     <article class="benefit_card"><img src="img/zeitersparnis.jpg" alt="" width="460" height="460" loading="lazy"><div><h3 class="benefit_title">Zeitersparnis</h3><p class="benefit_description">Mit eingespielten Abläufen entlasten wir Sie und schaffen Zeit für die wichtigen Dinge.</p></div></article>
@@ -316,12 +319,12 @@
             <div class="container-wide">
                 <div class="section_header"><h2 class="section_title">Bewertungen</h2><p class="section_intro">Das sagen unsere Kunden über uns.</p></div>
                 <div class="reviews_grid">
-                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Das Team ist sehr kompetent und freundlich. […] Preis-Leistung ist top!“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Madeleine K.</figcaption></figure>
-                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Ich kann dieses Unternehmen weiterempfehlen und werde sie beim nächsten Umzug wieder buchen“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Daniel H.</figcaption></figure>
-                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Die Möbel wurden gut verpackt und sorgfältig verladen.“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Bernd H.</figcaption></figure>
-                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Super unkomplizierte und sehr kurze Terminfindung. Schneller und guter Umzug.“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Felicia D.</figcaption></figure>
-                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Waren pünktlich, haben fleißig angepackt und geschleppt. Gerne wieder.“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Philip S.</figcaption></figure>
-                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">„Super kompetent und freundlich! Vielen Dank für die tolle Unterstützung beim Umzug!!“</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Stefan H.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">Tolles Umzugsunternehmen, können es nur weiterempfehlen! Das Team ist sehr kompetent und freundlich. Trotz Komplikationen ging der Umzug sehr schnell und es wurde nichts beschädigt. Preis-Leistung ist top!</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Madeleine K.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">Das Umzugsunternehmen ist sehr Professionell. Sie waren sehr freundlich und habe die Möbel sorgfältig auseinandergebaut und nach 450km am nächsten wieder ohne Schäden zusammengebaut. Sie waren Pünktlich und schnell. Ich kann dieses Unternehmen weiterempfehlen und werde sie beim nächsten Umzug wieder buchen👍 Preis war sehr gut👍</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Daniel H.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">Hat alles sehr gut geklappt. Die Möbel wurden gut verpackt und sorgfältig verladen. Auch das Ausladen war gut, obwohl unser Treppenhaus stark gewendelt ist.</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Bernd H.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">Super unkomplizierte und sehr kurze Terminfindung. Schneller und guter Umzug. Empfehle ich sehr gerne weiter!</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Felicia D.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">Hat alles geklappt. Waren pünktlich, haben fleißig angepackt und geschleppt. Gerne wieder. 🙂</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Philip S.</figcaption></figure>
+                    <figure class="review_card"><i class="review_quote" data-lucide="quote" aria-hidden="true"></i><blockquote class="review_text">Super kompetent und freundlich! Vielen Dank für die tolle Unterstützung beim Umzug!! Kann ich nur empfehlen.</blockquote><figcaption class="review_author"><i data-lucide="circle-user-round" aria-hidden="true"></i> Stefan H.</figcaption></figure>
                 </div>
                 <div class="section_action"><a class="button" href="https://maps.app.goo.gl/DChoaGH1B4owU1pBA" target="_blank" rel="noopener noreferrer">Mehr auf Google <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
             </div>
