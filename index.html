@@ -23,6 +23,7 @@
             --color-warm: #2a201b;
             --color-warm-light: #443027;
             --color-surface: #f5f5f5;
+            --color-whatsapp: #3da65b;
         }
 
         @layer base {
@@ -161,7 +162,7 @@
             .contact_consent input { @apply mt-1 size-4 shrink-0 accent-brand; }
             .contact_consent a { @apply font-semibold text-ink underline underline-offset-2; }
 
-            .footer { @apply bg-black py-10 text-white/60 sm:py-12; }
+            .footer { @apply bg-black pt-10 pb-28 text-white/60 sm:pt-12 sm:pb-28; }
             .footer_main { @apply flex flex-col items-center gap-4 text-center; }
             .footer_logo { @apply w-44; }
             .footer_contact { @apply flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold text-white; }
@@ -172,6 +173,11 @@
             .footer_bottom { @apply mt-7 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-center text-xs lg:flex-row lg:text-left; }
             .footer_links { @apply flex flex-wrap justify-center gap-x-4 gap-y-2; }
             .footer_links a { @apply transition hover:text-white; }
+
+            .whatsapp_widget { @apply fixed right-4 bottom-4 z-40 flex items-center gap-2 lg:right-6 lg:bottom-6 lg:gap-3; }
+            .whatsapp_label { @apply rounded-full bg-black px-4 py-2.5 text-xs font-bold text-white shadow-lg transition-colors group-hover:bg-ink sm:px-5 sm:py-3 sm:text-sm; }
+            .whatsapp_icon { @apply flex size-12 shrink-0 items-center justify-center rounded-full bg-whatsapp shadow-lg transition-transform group-hover:scale-105 sm:size-14; }
+            .whatsapp_icon img { @apply size-6 invert sm:size-7; }
         }
     </style>
 </head>
@@ -412,6 +418,10 @@
             </div>
         </div>
     </footer>
+    <a class="whatsapp_widget group" href="https://wa.me/491633470486?text=Hallo%2C%20ich%20m%C3%B6chte%20ein%20unverbindliches%20Angebot%20anfragen." target="_blank" rel="noopener noreferrer" aria-label="Unverbindliches Angebot per WhatsApp anfragen">
+        <span class="whatsapp_label">Angebot anfragen</span>
+        <span class="whatsapp_icon"><img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/whatsapp.svg" alt="" width="28" height="28"></span>
+    </a>
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('contactForm', () => ({
